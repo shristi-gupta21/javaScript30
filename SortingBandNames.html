@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      body {
+        background-image: url(./animalflexpanel.jpg);
+        background-size: cover;
+      }
+      ul li {
+        color: white;
+      }
+
+      #bands {
+        text-align: center;
+        width: 250px;
+        height: fit-content;
+        font-size: 18px;
+        padding: 20px;
+        background-color: rgb(250, 145, 96);
+      }
+    </style>
+
+    <ul id="bands"></ul>
+    <script>
+      const bands = [
+        "The Plot in You",
+        "The Devil Wears Prada",
+        "Pierce the Wall",
+        "Norma Jean",
+        "The Bled",
+        "Say Anything",
+        "The Midway State",
+        "We came as Romans",
+        "Counterparts",
+        "Oh, Sleeper",
+        "A Skyplit Drive",
+        "Anywhere But Here",
+        "An Old Dog",
+      ];
+      function strip(BandName) {
+        return BandName.replace(/^(a |the |an )/i, "").trim();
+      }
+      const sortedBand = bands.sort(function (a, b) {
+        if (strip(a) > strip(b)) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+      console.log(sortedBand);
+      document.querySelector("#bands").innerHTML = sortedBand
+        .map((band) => `<li>${band}<hr/></li>`)
+        .join("");
+    </script>
+  </body>
+</html>
